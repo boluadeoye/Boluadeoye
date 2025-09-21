@@ -16,7 +16,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             color: #333;
-            background-color: #f0f8ff; /* Light blue-ish background like template */
+            background-color: #f0f8ff; /* Light blue background */
             line-height: 1.6;
         }
         a {
@@ -40,7 +40,7 @@
             align-items: center;
             font-size: 1.5rem;
             font-weight: 700;
-            color: #008080; /* Teal accent */
+            color: #00CED1; /* Darker teal/cyan accent */
             margin-bottom: 1rem;
         }
         .logo img {
@@ -63,18 +63,25 @@
             transition: color 0.3s ease;
         }
         .nav-links a:hover {
-            color: #008080;
+            color: #00CED1;
         }
-        .buy-button {
-            padding: 0.5rem 1rem;
-            background-color: #008080;
+
+        /* Chip-like Buttons */
+        .chip-button {
+            padding: 0.7rem 1.5rem;
+            background-color: #00CED1;
             color: #fff;
             border-radius: 20px;
             font-weight: 600;
-            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 0.5rem;
         }
-        .buy-button:hover {
-            background-color: #006666;
+        .chip-button:hover {
+            background-color: #009688;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Hero Section */
@@ -82,6 +89,7 @@
             padding: 2rem 1rem;
             text-align: center;
             animation: fadeIn 1s ease-in-out;
+            background: linear-gradient(135deg, #f0f8ff, #e6f3ff);
         }
         .hero .welcome {
             font-size: 0.9rem;
@@ -92,7 +100,7 @@
         }
         .hero h1 {
             font-size: 2.5rem;
-            color: #008080;
+            color: #00CED1;
             margin-bottom: 0.5rem;
         }
         .hero .profession {
@@ -111,6 +119,27 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 0 auto;
             display: block;
+        }
+
+        /* Certified Card */
+        .certified-card {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 2rem auto;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out 0.5s backwards;
+        }
+        .certified-card h3 {
+            font-size: 1.2rem;
+            color: #00CED1;
+            margin-bottom: 0.5rem;
+        }
+        .certified-card p {
+            font-size: 1rem;
+            color: #666;
         }
 
         /* Social and Skills Sections */
@@ -136,11 +165,11 @@
         }
         .icons a {
             font-size: 1.5rem;
-            color: #008080;
+            color: #00CED1;
             transition: color 0.3s ease;
         }
         .icons a:hover {
-            color: #006666;
+            color: #009688;
         }
 
         /* Animations */
@@ -149,7 +178,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Desktop Adjustments (Media Query) */
+        /* Desktop Adjustments */
         @media (min-width: 768px) {
             .navbar {
                 flex-direction: row;
@@ -181,6 +210,9 @@
                 flex-direction: row;
                 justify-content: space-around;
             }
+            .certified-card {
+                margin: 3rem auto;
+            }
         }
     </style>
 </head>
@@ -201,7 +233,7 @@
             <li><a href="#blog">Blog</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="#contact" class="buy-button">Hire Me</a>
+        <a href="#contact" class="chip-button">Hire Me</a>
     </nav>
 
     <!-- Hero Section -->
@@ -214,6 +246,12 @@
         </div>
         <img src="assets/images/profile.jpg" alt="Boluadeoye holding a coffee cup">
     </section>
+
+    <!-- Certified Card -->
+    <div class="certified-card">
+        <h3>Certified Web Developer</h3>
+        <p>Recognized for expertise in HTML, CSS, and JavaScript, with a focus on responsive design and modern frameworks.</p>
+    </div>
 
     <!-- Bottom Sections -->
     <div class="bottom-sections">
@@ -235,5 +273,17 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
