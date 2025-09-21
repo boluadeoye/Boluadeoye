@@ -4,26 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boluadeoye - Web Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Reset and Base Styles */
+        /* Mobile-First Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
             color: #333;
-            background-color: #f9f9f9;
+            background-color: #f0f8ff; /* Light blue-ish background like template */
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
         }
 
-        /* Navigation (Sticky Menu) */
+        /* Navigation */
         .navbar {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 1rem 5%;
+            padding: 1rem;
             background-color: #fff;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: sticky;
@@ -31,17 +36,28 @@
             z-index: 100;
         }
         .logo {
+            display: flex;
+            align-items: center;
             font-size: 1.5rem;
-            font-weight: bold;
-            color: #008080;
+            font-weight: 700;
+            color: #008080; /* Teal accent */
+            margin-bottom: 1rem;
+        }
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
         }
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
         .nav-links a {
-            text-decoration: none;
             color: #333;
             font-weight: 600;
             transition: color 0.3s ease;
@@ -49,123 +65,121 @@
         .nav-links a:hover {
             color: #008080;
         }
-
-        /* Hero Section */
-        .hero {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background-color: #fff;
-            padding: 0 5%;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            color: #008080;
-            margin-bottom: 1rem;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 2rem;
-        }
-        .cta-button {
-            padding: 0.8rem 2rem;
+        .buy-button {
+            padding: 0.5rem 1rem;
             background-color: #008080;
             color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
+            border-radius: 20px;
             font-weight: 600;
             transition: background-color 0.3s ease;
         }
-        .cta-button:hover {
+        .buy-button:hover {
             background-color: #006666;
         }
 
-        /* Sections */
-        .section {
-            padding: 4rem 5%;
+        /* Hero Section */
+        .hero {
+            padding: 2rem 1rem;
             text-align: center;
+            animation: fadeIn 1s ease-in-out;
         }
-        .section h2 {
+        .hero .welcome {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
             font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: #008080;
-        }
-
-        /* About Section */
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .about-content p {
-            font-size: 1.1rem;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .project-item {
-            background-color: #fff;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        .project-item:hover {
-            transform: translateY(-5px);
-        }
-        .project-item h3 {
             color: #008080;
             margin-bottom: 0.5rem;
         }
-
-        /* Contact Section */
-        .contact-form {
+        .hero .profession {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
             max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #666;
+        }
+        .hero img {
+            width: 80%;
+            max-width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 0 auto;
+            display: block;
+        }
+
+        /* Social and Skills Sections */
+        .bottom-sections {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem 1rem;
+        }
+        .social, .skills {
+            text-align: center;
+        }
+        .social h3, .skills h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .icons {
+            display: flex;
             gap: 1rem;
         }
-        .contact-form input,
-        .contact-form textarea {
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
+        .icons a {
+            font-size: 1.5rem;
+            color: #008080;
+            transition: color 0.3s ease;
         }
-        .contact-form textarea {
-            resize: vertical;
-            min-height: 120px;
+        .icons a:hover {
+            color: #006666;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: #fff;
-            border-top: 1px solid #ddd;
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
+        /* Desktop Adjustments (Media Query) */
+        @media (min-width: 768px) {
+            .navbar {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .logo {
+                margin-bottom: 0;
             }
             .nav-links {
-                gap: 1rem;
+                margin-bottom: 0;
             }
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
+            .hero {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 4rem 5%;
+                text-align: left;
+            }
+            .hero .text {
+                flex: 1;
+                padding-right: 2rem;
+            }
+            .hero img {
+                flex: 1;
+                max-width: 400px;
+                margin: 0;
+            }
+            .bottom-sections {
+                flex-direction: row;
+                justify-content: space-around;
             }
         }
     </style>
@@ -173,75 +187,53 @@
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="logo">Boluadeoye</div>
+        <div class="logo">
+            <img src="assets/images/profile.jpg" alt="Boluadeoye Profile" aria-label="Boluadeoye Profile Picture">
+            Boluadeoye
+        </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#clients">Clients</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#blog">Blog</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <a href="#contact" class="buy-button">Hire Me</a>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <h1>Boluadeoye</h1>
-        <p>Web Developer | Crafting Modern Web Experiences</p>
-        <a href="#contact" class="cta-button">Get in Touch</a>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <p>Hi there 👋 I'm Boluadeoye, a web developer passionate about creating clean, responsive websites that blend functionality with creativity. From building dynamic layouts to integrating smooth interactions, I focus on code that delivers impact.</p>
+        <div class="text">
+            <div class="welcome">Welcome To My World</div>
+            <h1>Hi, I'm Boluadeoye</h1>
+            <div class="profession">a Web Developer.</div>
+            <p>I craft responsive, modern websites with clean code and user-friendly designs. From dynamic layouts to interactive elements, I bring ideas to life on the web.</p>
         </div>
+        <img src="assets/images/profile.jpg" alt="Boluadeoye holding a coffee cup">
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <h2>Projects</h2>
-        <div class="projects-grid">
-            <div class="project-item">
-                <h3>Modern Landing Page</h3>
-                <p>A responsive single-page site with CSS Grid and hover effects, showcasing clean design principles.</p>
-            </div>
-            <div class="project-item">
-                <h3>Interactive Portfolio</h3>
-                <p>A dynamic gallery using JavaScript for smooth transitions, highlighting user experience.</p>
-            </div>
-            <div class="project-item">
-                <h3>E-Commerce Mockup</h3>
-                <p>A full-stack inspired layout with form validation and mobile optimization.</p>
+    <!-- Bottom Sections -->
+    <div class="bottom-sections">
+        <div class="social">
+            <h3>Find With Me</h3>
+            <div class="icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <h2>Contact Me</h2>
-        <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit" class="cta-button">Send Message</button>
-        </form>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Boluadeoye. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+        <div class="skills">
+            <h3>Best Skill On</h3>
+            <div class="icons">
+                <a href="#" aria-label="HTML"><i class="fab fa-html5"></i></a>
+                <a href="#" aria-label="CSS"><i class="fab fa-css3-alt"></i></a>
+                <a href="#" aria-label="JavaScript"><i class="fab fa-js"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
