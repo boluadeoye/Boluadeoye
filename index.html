@@ -16,7 +16,7 @@
         body {
             font-family: 'Poppins', sans-serif;
             color: #333;
-            background-color: #f0f8ff; /* Light blue background */
+            background-color: #f0f8ff;
             line-height: 1.6;
         }
         a {
@@ -34,13 +34,14 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            animation: fadeIn 0.5s ease-in-out;
         }
         .logo {
             display: flex;
             align-items: center;
             font-size: 1.5rem;
             font-weight: 700;
-            color: #00CED1; /* Darker teal/cyan accent */
+            color: #00CED1;
             margin-bottom: 1rem;
         }
         .logo img {
@@ -48,6 +49,10 @@
             height: 40px;
             border-radius: 50%;
             margin-right: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+        .logo:hover img {
+            transform: rotate(10deg);
         }
         .nav-links {
             list-style: none;
@@ -66,7 +71,7 @@
             color: #00CED1;
         }
 
-        /* Chip-like Buttons */
+        /* Chip-like Buttons with Animation */
         .chip-button {
             padding: 0.7rem 1.5rem;
             background-color: #00CED1;
@@ -74,22 +79,22 @@
             border-radius: 20px;
             font-weight: 600;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            transition: all 0.3s ease, transform 0.3s ease;
             display: inline-block;
             margin: 0.5rem;
         }
         .chip-button:hover {
             background-color: #009688;
-            transform: scale(1.05);
+            transform: scale(1.05) rotate(2deg);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* Hero Section */
+        /* Hero Section with Animation */
         .hero {
             padding: 2rem 1rem;
             text-align: center;
-            animation: fadeIn 1s ease-in-out;
             background: linear-gradient(135deg, #f0f8ff, #e6f3ff);
+            animation: slideUp 1s ease-out;
         }
         .hero .welcome {
             font-size: 0.9rem;
@@ -97,20 +102,28 @@
             letter-spacing: 1px;
             color: #666;
             margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 0.2s forwards;
         }
         .hero h1 {
             font-size: 2.5rem;
             color: #00CED1;
             margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 0.4s forwards;
         }
         .hero .profession {
             font-size: 1.8rem;
             margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 0.6s forwards;
         }
         .hero p {
             max-width: 600px;
             margin: 0 auto 2rem;
             color: #666;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 0.8s forwards;
         }
         .hero img {
             width: 80%;
@@ -119,9 +132,11 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 0 auto;
             display: block;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 1s forwards;
         }
 
-        /* Certified Card */
+        /* Certified Card with Animation */
         .certified-card {
             background-color: #fff;
             padding: 1.5rem;
@@ -130,7 +145,8 @@
             max-width: 400px;
             margin: 2rem auto;
             text-align: center;
-            animation: fadeIn 1s ease-in-out 0.5s backwards;
+            opacity: 0;
+            animation: slideInLeft 1s ease-out 0.5s forwards;
         }
         .certified-card h3 {
             font-size: 1.2rem;
@@ -166,16 +182,25 @@
         .icons a {
             font-size: 1.5rem;
             color: #00CED1;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
         .icons a:hover {
             color: #009688;
+            transform: scale(1.2);
         }
 
         /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes slideInLeft {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
         /* Desktop Adjustments */
