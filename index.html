@@ -15,8 +15,8 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            color: #333333;
-            background: linear-gradient(135deg, #F5F7FA, #EDEFF5);
+            color: #444444; /* Darker text for readability */
+            background: linear-gradient(135deg, #F5F7FA, #DDE5F0); /* Bolder gradient */
             line-height: 1.6;
         }
         a {
@@ -63,7 +63,7 @@
             margin-bottom: 1rem;
         }
         .nav-links a {
-            color: #333333;
+            color: #444444;
             font-weight: 600;
             transition: color 0.3s ease;
         }
@@ -99,7 +99,7 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #666;
+            color: #555555; /* Darker gray */
             margin-bottom: 1rem;
             opacity: 0;
             animation: fadeIn 1s ease-in-out 0.2s forwards;
@@ -120,7 +120,7 @@
         .hero p {
             max-width: 600px;
             margin: 0 auto 2rem;
-            color: #666;
+            color: #555555;
             opacity: 0;
             animation: fadeIn 1s ease-in-out 0.8s forwards;
         }
@@ -154,7 +154,46 @@
         }
         .certified-card p {
             font-size: 1rem;
-            color: #666;
+            color: #555555;
+        }
+
+        /* Portfolio Section (Placeholder) */
+        .portfolio {
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .portfolio h2 {
+            font-size: 2rem;
+            color: #FF6F61;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out 1.2s forwards;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .portfolio-item {
+            background-color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.4s forwards;
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+        .portfolio-item h3 {
+            color: #FF6F61;
+            margin-bottom: 0.5rem;
+        }
+        .portfolio-item p {
+            color: #555555;
         }
 
         /* Social and Skills Sections */
@@ -171,7 +210,7 @@
         .social h3, .skills h3 {
             font-size: 1rem;
             text-transform: uppercase;
-            color: #666;
+            color: #555555;
             margin-bottom: 1rem;
         }
         .icons {
@@ -201,6 +240,10 @@
             from { transform: translateX(-20px); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         /* Desktop Adjustments */
         @media (min-width: 768px) {
@@ -229,6 +272,9 @@
                 flex: 1;
                 max-width: 400px;
                 margin: 0;
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
             .bottom-sections {
                 flex-direction: row;
@@ -274,8 +320,23 @@
     <!-- Certified Card -->
     <div class="certified-card">
         <h3>Certified Web Developer</h3>
-        <p>Recognized for expertise in HTML, CSS, and JavaScript, with a focus on responsive design and modern frameworks.</p>
+        <p>Recognized for expertise in HTML, CSS, and JavaScript, with a focus on responsive design.</p>
     </div>
+
+    <!-- Portfolio Section (Placeholder) -->
+    <section id="portfolio" class="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <h3>Responsive Landing Page</h3>
+                <p>A clean, mobile-first design with CSS Grid and hover effects.</p>
+            </div>
+            <div class="portfolio-item">
+                <h3>Interactive Gallery</h3>
+                <p>A dynamic showcase using JavaScript animations.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Bottom Sections -->
     <div class="bottom-sections">
