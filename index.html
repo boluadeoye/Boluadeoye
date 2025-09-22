@@ -49,12 +49,15 @@
             margin: 0 auto;
             padding: 0 1rem;
         }
+        .section {
+            padding: 4rem 0; /* Standardized vertical padding */
+        }
 
         /* Navigation */
         .navbar {
-            padding: 0.75rem 0; /* Reduced vertical padding */
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
+            padding: 0.75rem 0;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
@@ -76,7 +79,7 @@
             font-family: var(--serif);
         }
         .logo img {
-            width: 36px; /* Reduced logo size */
+            width: 36px;
             height: 36px;
             border-radius: 50%;
             margin-right: 0.75rem;
@@ -88,7 +91,7 @@
         }
         .nav-links {
             list-style: none;
-            display: none; /* Hidden by default on mobile */
+            display: none;
             gap: 2rem;
         }
         .nav-links a {
@@ -101,7 +104,7 @@
         }
         
         .hamburger-menu {
-            display: block; /* Shown by default on mobile */
+            display: block;
             cursor: pointer;
             background: none;
             border: none;
@@ -117,9 +120,9 @@
         }
         
         .mobile-nav {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
-            top: 60px; /* Position below navbar */
+            top: 61px; /* Position below navbar */
             left: 0;
             width: 100%;
             background-color: var(--panel);
@@ -127,23 +130,14 @@
             padding: 1rem 0;
             z-index: 99;
         }
-        .mobile-nav ul {
-            list-style: none;
-            text-align: center;
-        }
-        .mobile-nav ul li {
-            padding: 1rem 0;
-        }
-        .mobile-nav ul a {
-            color: var(--ink);
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
+        .mobile-nav ul { list-style: none; text-align: center; }
+        .mobile-nav ul li { padding: 1rem 0; }
+        .mobile-nav ul a { color: var(--ink); font-weight: 600; font-size: 1.1rem; }
         
         /* Modern Button */
         .btn {
-            display: none; /* Hidden by default on mobile */
-            padding: 0.7rem 1.5rem; /* Slightly smaller button */
+            display: none;
+            padding: 0.7rem 1.5rem;
             background-color: var(--accent);
             color: #fff;
             border-radius: 8px;
@@ -159,8 +153,11 @@
         }
 
         /* Hero Section */
-        .hero {
-            padding: 2rem 1rem;
+        #home.section {
+             padding-top: 2rem; /* Less padding on top for hero */
+             padding-bottom: 2rem;
+        }
+        .hero-content {
             text-align: center;
             animation: slideUp 1s ease-out;
         }
@@ -187,7 +184,7 @@
             font-size: clamp(1.2rem, 3vw, 1.5rem);
             margin-bottom: 1.5rem;
             opacity: 0;
-            color: #4B5563; /* Muted text color */
+            color: #4B5563;
             animation: fadeIn 1s ease-in-out 0.6s forwards;
         }
         .hero p {
@@ -210,16 +207,12 @@
         }
 
         /* Other Sections... */
-        .certified-card, .portfolio, .bottom-sections {
-            padding: 2rem 1rem;
-        }
-        /* ... existing styles for certified-card, portfolio, etc. ... */
-        .certified-card { background-color: var(--panel); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07); border: 1px solid var(--border-color); max-width: 400px; margin: 2rem auto; text-align: center; opacity: 0; animation: slideInLeft 1s ease-out 0.5s forwards; }
+        .certified-card { background-color: var(--panel); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07); border: 1px solid var(--border-color); max-width: 400px; margin: 0 auto; text-align: center; opacity: 0; animation: slideInLeft 1s ease-out 0.5s forwards; }
         .certified-card h3 { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); margin-bottom: 0.5rem; }
         .certified-card p { font-size: 1rem; color: #4B5563; }
         .portfolio { text-align: center; }
         .portfolio h2 { font-family: var(--serif); font-size: 2.5rem; color: var(--ink); margin-bottom: 2rem; opacity: 0; animation: fadeIn 1s ease-in-out 1.2s forwards; }
-        .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 0 auto; }
         .portfolio-item { background-color: var(--panel); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07); border: 1px solid var(--border-color); opacity: 0; animation: fadeInUp 1s ease-out 1.4s forwards; transition: all 0.3s ease; text-align: left; }
         .portfolio-item:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); border-color: var(--accent); }
         .portfolio-item h3 { color: var(--accent); margin-bottom: 0.5rem; }
@@ -239,21 +232,13 @@
 
         /* Desktop Adjustments */
         @media (min-width: 768px) {
-            .hamburger-menu, .mobile-nav {
-                display: none; /* Hide hamburger and mobile nav on desktop */
-            }
-            .nav-links, .btn {
-                display: flex; /* Show desktop nav links and button */
-            }
-            .navbar-content {
-                 width: 100%;
-            }
-            .hero { display: flex; align-items: center; justify-content: space-between; padding: 4rem 1rem; text-align: left; }
+            .hamburger-menu, .mobile-nav { display: none; }
+            .nav-links, .btn { display: flex; }
+            .hero-content { display: flex; align-items: center; justify-content: space-between; text-align: left; }
             .hero .text { flex: 1; padding-right: 3rem; }
             .hero img { flex: 1; max-width: 400px; margin: 0; }
             .portfolio-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
             .bottom-sections { flex-direction: row; justify-content: space-around; }
-            .certified-card { margin: 3rem auto; }
         }
     </style>
 </head>
@@ -290,65 +275,78 @@
         </ul>
     </nav>
 
-    <section id="home" class="hero container">
-        <div class="text">
-            <div class="welcome">Welcome To My World</div>
-            <h1>Hi, I'm Boluadeoye</h1>
-            <div class="profession">a Web Developer.</div>
-            <p>I craft responsive, modern websites with clean code and user-friendly designs. From dynamic layouts to interactive elements, I bring ideas to life on the web.</p>
-        </div>
-        <img src="assets/images/profile.jpg" alt="Boluadeoye holding a coffee cup">
-    </section>
-
-    <div class="container">
-        <div class="certified-card">
-            <h3>Certified Web Developer</h3>
-            <p>Recognized for expertise in HTML, CSS, and JavaScript, with a focus on responsive design.</p>
-        </div>
-
-        <section id="portfolio" class="portfolio">
-            <h2>Portfolio</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <h3>Responsive Landing Page</h3>
-                    <p>A clean, mobile-first design with CSS Grid and hover effects.</p>
+    <main>
+        <section id="home" class="hero section">
+            <div class="container hero-content">
+                <div class="text">
+                    <div class="welcome">Welcome To My World</div>
+                    <h1>Hi, I'm Boluadeoye</h1>
+                    <div class="profession">a Web Developer.</div>
+                    <p>I craft responsive, modern websites with clean code and user-friendly designs. From dynamic layouts to interactive elements, I bring ideas to life on the web.</p>
                 </div>
-                <div class="portfolio-item">
-                    <h3>Interactive Gallery</h3>
-                    <p>A dynamic showcase using JavaScript animations.</p>
+                <img src="assets/images/profile.jpg" alt="Boluadeoye holding a coffee cup">
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="certified-card">
+                    <h3>Certified Web Developer</h3>
+                    <p>Recognized for expertise in HTML, CSS, and JavaScript, with a focus on responsive design.</p>
                 </div>
             </div>
         </section>
 
-        <div class="bottom-sections">
-            <div class="social">
-                <h3>Find With Me</h3>
-                <div class="icons">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <section id="portfolio" class="portfolio section">
+            <div class="container">
+                <h2>Portfolio</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <h3>Responsive Landing Page</h3>
+                        <p>A clean, mobile-first design with CSS Grid and hover effects.</p>
+                    </div>
+                    <div class="portfolio-item">
+                        <h3>Interactive Gallery</h3>
+                        <p>A dynamic showcase using JavaScript animations.</p>
+                    </div>
                 </div>
             </div>
-            <div class="skills">
-                <h3>Best Skill On</h3>
-                <div class="icons">
-                    <a href="#" aria-label="HTML"><i class="fab fa-html5"></i></a>
-                    <a href="#" aria-label="CSS"><i class="fab fa-css3-alt"></i></a>
-                    <a href="#" aria-label="JavaScript"><i class="fab fa-js"></i></a>
-                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="bottom-sections">
+                    <div class="social">
+                        <h3>Find With Me</h3>
+                        <div class="icons">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <h3>Best Skill On</h3>
+                        <div class="icons">
+                            <a href="#" aria-label="HTML"><i class="fab fa-html5"></i></a>
+                            <a href="#" aria-label="CSS"><i class="fab fa-css3-alt"></i></a>
+                            <a href="#" aria-label="JavaScript"><i class="fab fa-js"></i></a>
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
 
@@ -356,7 +354,8 @@
         const hamburger = document.querySelector('.hamburger-menu');
         const mobileNav = document.getElementById('mobileNav');
         hamburger.addEventListener('click', () => {
-            mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
+            const isVisible = mobileNav.style.display === 'block';
+            mobileNav.style.display = isVisible ? 'none' : 'block';
         });
     </script>
 </body>
