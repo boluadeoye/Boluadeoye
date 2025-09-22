@@ -15,8 +15,8 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            color: #FFFFFF;
-            background: linear-gradient(135deg, #1A1A2E, #16213E);
+            color: #333333;
+            background: linear-gradient(135deg, #F9E4D4, #FFE6CC);
             line-height: 1.6;
         }
         a {
@@ -29,8 +29,8 @@
             flex-direction: column;
             align-items: center;
             padding: 1rem;
-            background-color: rgba(26, 26, 46, 0.9); /* Semi-transparent for readability */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -41,7 +41,7 @@
             align-items: center;
             font-size: 1.5rem;
             font-weight: 700;
-            color: #E94560;
+            color: #FF69B4;
             margin-bottom: 1rem;
         }
         .logo img {
@@ -64,30 +64,30 @@
             margin-bottom: 1rem;
         }
         .nav-links a {
-            color: #FFFFFF;
+            color: #333333;
             font-weight: 600;
             transition: color 0.3s ease;
         }
         .nav-links a:hover {
-            color: #FFD700;
+            color: #FF69B4;
         }
 
         /* Chip-like Buttons with Animation */
         .chip-button {
             padding: 0.7rem 1.5rem;
-            background-color: #E94560;
-            color: #FFFFFF;
+            background-color: #FF69B4;
+            color: #fff;
             border-radius: 20px;
             font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease, transform 0.3s ease;
             display: inline-block;
             margin: 0.5rem;
         }
         .chip-button:hover {
-            background-color: #FF7043;
+            background-color: #FF1493;
             transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Hero Section with Animation */
@@ -100,14 +100,14 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #DDDDDD; /* Lighter gray for contrast */
+            color: #555555;
             margin-bottom: 1rem;
             opacity: 0;
             animation: fadeIn 1s ease-in-out 0.2s forwards;
         }
         .hero h1 {
             font-size: 2.5rem;
-            color: #E94560;
+            color: #FF69B4;
             margin-bottom: 0.5rem;
             opacity: 0;
             animation: fadeIn 1s ease-in-out 0.4s forwards;
@@ -121,7 +121,7 @@
         .hero p {
             max-width: 600px;
             margin: 0 auto 2rem;
-            color: #DDDDDD;
+            color: #555555;
             opacity: 0;
             animation: fadeIn 1s ease-in-out 0.8s forwards;
         }
@@ -129,7 +129,7 @@
             width: 80%;
             max-width: 300px;
             border-radius: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 0 auto;
             display: block;
             opacity: 0;
@@ -139,25 +139,24 @@
 
         /* Certified Card with Animation */
         .certified-card {
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            background-color: #fff;
             padding: 1.5rem;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 400px;
             margin: 2rem auto;
             text-align: center;
             opacity: 0;
             animation: slideInLeft 1s ease-out 0.5s forwards;
-            backdrop-filter: blur(5px); /* Modern glass effect */
         }
         .certified-card h3 {
             font-size: 1.2rem;
-            color: #E94560;
+            color: #FF69B4;
             margin-bottom: 0.5rem;
         }
         .certified-card p {
             font-size: 1rem;
-            color: #DDDDDD;
+            color: #555555;
         }
 
         /* Portfolio Section (Placeholder) */
@@ -167,7 +166,7 @@
         }
         .portfolio h2 {
             font-size: 2rem;
-            color: #E94560;
+            color: #FF69B4;
             margin-bottom: 2rem;
             opacity: 0;
             animation: fadeIn 1s ease-in-out 1.2s forwards;
@@ -180,24 +179,23 @@
             margin: 0 auto;
         }
         .portfolio-item {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: #fff;
             padding: 1.5rem;
             border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             opacity: 0;
             animation: fadeInUp 1s ease-out 1.4s forwards;
             transition: transform 0.3s ease;
-            backdrop-filter: blur(5px);
         }
         .portfolio-item:hover {
             transform: translateY(-5px);
         }
         .portfolio-item h3 {
-            color: #E94560;
+            color: #FF69B4;
             margin-bottom: 0.5rem;
         }
         .portfolio-item p {
-            color: #DDDDDD;
+            color: #555555;
         }
 
         /* Social and Skills Sections */
@@ -214,7 +212,7 @@
         .social h3, .skills h3 {
             font-size: 1rem;
             text-transform: uppercase;
-            color: #DDDDDD;
+            color: #555555;
             margin-bottom: 1rem;
         }
         .icons {
@@ -223,11 +221,11 @@
         }
         .icons a {
             font-size: 1.5rem;
-            color: #E94560;
+            color: #FF69B4;
             transition: all 0.3s ease;
         }
         .icons a:hover {
-            color: #FF7043;
+            color: #FF1493;
             transform: scale(1.2);
         }
 
