@@ -32,6 +32,9 @@
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
+        body.menu-open {
+            overflow: hidden;
+        }
         a {
             text-decoration: none;
             color: var(--accent);
@@ -41,13 +44,15 @@
             max-width: 100%;
             display: block;
         }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
 
         /* Navigation */
         .navbar {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem;
+            padding: 0.75rem 0; /* Reduced vertical padding */
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(8px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -57,18 +62,22 @@
             animation: fadeIn 0.5s ease-in-out;
             border-bottom: 1px solid var(--border-color);
         }
+        .navbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .logo {
             display: flex;
             align-items: center;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--ink);
-            margin-bottom: 1rem;
             font-family: var(--serif);
         }
         .logo img {
-            width: 40px;
-            height: 40px;
+            width: 36px; /* Reduced logo size */
+            height: 36px;
             border-radius: 50%;
             margin-right: 0.75rem;
             transition: transform 0.3s ease;
@@ -79,11 +88,8 @@
         }
         .nav-links {
             list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
+            display: none; /* Hidden by default on mobile */
+            gap: 2rem;
         }
         .nav-links a {
             color: var(--ink);
@@ -93,18 +99,57 @@
         .nav-links a:hover {
             color: var(--accent);
         }
-
+        
+        .hamburger-menu {
+            display: block; /* Shown by default on mobile */
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+        }
+        .hamburger-menu .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--ink);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .mobile-nav {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 60px; /* Position below navbar */
+            left: 0;
+            width: 100%;
+            background-color: var(--panel);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            z-index: 99;
+        }
+        .mobile-nav ul {
+            list-style: none;
+            text-align: center;
+        }
+        .mobile-nav ul li {
+            padding: 1rem 0;
+        }
+        .mobile-nav ul a {
+            color: var(--ink);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
         /* Modern Button */
         .btn {
-            padding: 0.8rem 1.8rem;
+            display: none; /* Hidden by default on mobile */
+            padding: 0.7rem 1.5rem; /* Slightly smaller button */
             background-color: var(--accent);
             color: #fff;
             border-radius: 8px;
             font-weight: 600;
             box-shadow: 0 4px 12px rgba(0, 82, 255, 0.2);
             transition: all 0.3s ease;
-            display: inline-block;
-            margin: 0.5rem;
             border: none;
         }
         .btn:hover {
@@ -164,187 +209,88 @@
             border: 2px solid var(--border-color);
         }
 
-        /* Certified Card */
-        .certified-card {
-            background-color: var(--panel);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-            border: 1px solid var(--border-color);
-            max-width: 400px;
-            margin: 2rem auto;
-            text-align: center;
-            opacity: 0;
-            animation: slideInLeft 1s ease-out 0.5s forwards;
-        }
-        .certified-card h3 {
-            font-family: var(--serif);
-            font-size: 1.2rem;
-            color: var(--ink);
-            margin-bottom: 0.5rem;
-        }
-        .certified-card p {
-            font-size: 1rem;
-            color: #4B5563;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-        .portfolio h2 {
-            font-family: var(--serif);
-            font-size: 2.5rem;
-            color: var(--ink);
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeIn 1s ease-in-out 1.2s forwards;
-        }
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .portfolio-item {
-            background-color: var(--panel);
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-            border: 1px solid var(--border-color);
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 1.4s forwards;
-            transition: all 0.3s ease;
-            text-align: left;
-        }
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            border-color: var(--accent);
-        }
-        .portfolio-item h3 {
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-        .portfolio-item p {
-            color: #4B5563;
-        }
-
-        /* Social and Skills Sections */
-        .bottom-sections {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
+        /* Other Sections... */
+        .certified-card, .portfolio, .bottom-sections {
             padding: 2rem 1rem;
         }
-        .social, .skills {
-            text-align: center;
-        }
-        .social h3, .skills h3 {
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #4B5563;
-            margin-bottom: 1rem;
-        }
-        .icons {
-            display: flex;
-            gap: 1.5rem;
-        }
-        .icons a {
-            font-size: 1.5rem;
-            color: var(--accent);
-            transition: all 0.3s ease;
-        }
-        .icons a:hover {
-            color: #0045D1;
-            transform: scale(1.2);
-        }
+        /* ... existing styles for certified-card, portfolio, etc. ... */
+        .certified-card { background-color: var(--panel); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07); border: 1px solid var(--border-color); max-width: 400px; margin: 2rem auto; text-align: center; opacity: 0; animation: slideInLeft 1s ease-out 0.5s forwards; }
+        .certified-card h3 { font-family: var(--serif); font-size: 1.2rem; color: var(--ink); margin-bottom: 0.5rem; }
+        .certified-card p { font-size: 1rem; color: #4B5563; }
+        .portfolio { text-align: center; }
+        .portfolio h2 { font-family: var(--serif); font-size: 2.5rem; color: var(--ink); margin-bottom: 2rem; opacity: 0; animation: fadeIn 1s ease-in-out 1.2s forwards; }
+        .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .portfolio-item { background-color: var(--panel); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07); border: 1px solid var(--border-color); opacity: 0; animation: fadeInUp 1s ease-out 1.4s forwards; transition: all 0.3s ease; text-align: left; }
+        .portfolio-item:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); border-color: var(--accent); }
+        .portfolio-item h3 { color: var(--accent); margin-bottom: 0.5rem; }
+        .portfolio-item p { color: #4B5563; }
+        .bottom-sections { display: flex; flex-direction: column; align-items: center; gap: 2rem; }
+        .social, .skills { text-align: center; }
+        .social h3, .skills h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: #4B5563; margin-bottom: 1rem; }
+        .icons { display: flex; gap: 1.5rem; }
+        .icons a { font-size: 1.5rem; color: var(--accent); transition: all 0.3s ease; }
+        .icons a:hover { color: #0045D1; transform: scale(1.2); }
 
         /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes slideInLeft {
-            from { transform: translateX(-20px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes slideInLeft { from { transform: translateX(-20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* Desktop Adjustments */
         @media (min-width: 768px) {
-            .navbar {
-                flex-direction: row;
-                justify-content: space-between;
-                padding: 1rem 5%;
+            .hamburger-menu, .mobile-nav {
+                display: none; /* Hide hamburger and mobile nav on desktop */
             }
-            .logo {
-                margin-bottom: 0;
+            .nav-links, .btn {
+                display: flex; /* Show desktop nav links and button */
             }
-            .nav-links {
-                margin-bottom: 0;
-                gap: 2rem;
+            .navbar-content {
+                 width: 100%;
             }
-            .hero {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 4rem 5%;
-                text-align: left;
-            }
-            .hero .text {
-                flex: 1;
-                padding-right: 3rem;
-            }
-            .hero img {
-                flex: 1;
-                max-width: 400px;
-                margin: 0;
-            }
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-            .bottom-sections {
-                flex-direction: row;
-                justify-content: space-around;
-            }
-            .certified-card {
-                margin: 3rem auto;
-            }
+            .hero { display: flex; align-items: center; justify-content: space-between; padding: 4rem 1rem; text-align: left; }
+            .hero .text { flex: 1; padding-right: 3rem; }
+            .hero img { flex: 1; max-width: 400px; margin: 0; }
+            .portfolio-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+            .bottom-sections { flex-direction: row; justify-content: space-around; }
+            .certified-card { margin: 3rem auto; }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="assets/images/profile.jpg" alt="Boluadeoye Profile" aria-label="Boluadeoye Profile Picture">
-            <span>Boluadeoye</span>
+    <header class="navbar">
+        <div class="container navbar-content">
+            <a href="#home" class="logo">
+                <img src="assets/images/profile.jpg" alt="Boluadeoye Profile" aria-label="Boluadeoye Profile Picture">
+                <span>Boluadeoye</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="btn">Hire Me</a>
+            <button class="hamburger-menu" aria-label="Open menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
-        <ul class="nav-links">
+    </header>
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#resume">Resume</a></li>
-            <li><a href="#clients">Clients</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#blog">Blog</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="#contact" class="btn">Hire Me</a>
     </nav>
 
-    <section id="home" class="hero">
+    <section id="home" class="hero container">
         <div class="text">
             <div class="welcome">Welcome To My World</div>
             <h1>Hi, I'm Boluadeoye</h1>
@@ -354,41 +300,43 @@
         <img src="assets/images/profile.jpg" alt="Boluadeoye holding a coffee cup">
     </section>
 
-    <div class="certified-card">
-        <h3>Certified Web Developer</h3>
-        <p>Recognized for expertise in HTML, CSS, and JavaScript, with a focus on responsive design.</p>
-    </div>
-
-    <section id="portfolio" class="portfolio">
-        <h2>Portfolio</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <h3>Responsive Landing Page</h3>
-                <p>A clean, mobile-first design with CSS Grid and hover effects.</p>
-            </div>
-            <div class="portfolio-item">
-                <h3>Interactive Gallery</h3>
-                <p>A dynamic showcase using JavaScript animations.</p>
-            </div>
+    <div class="container">
+        <div class="certified-card">
+            <h3>Certified Web Developer</h3>
+            <p>Recognized for expertise in HTML, CSS, and JavaScript, with a focus on responsive design.</p>
         </div>
-    </section>
 
-    <div class="bottom-sections">
-        <div class="social">
-            <h3>Find With Me</h3>
-            <div class="icons">
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <section id="portfolio" class="portfolio">
+            <h2>Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <h3>Responsive Landing Page</h3>
+                    <p>A clean, mobile-first design with CSS Grid and hover effects.</p>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Interactive Gallery</h3>
+                    <p>A dynamic showcase using JavaScript animations.</p>
+                </div>
             </div>
-        </div>
-        <div class="skills">
-            <h3>Best Skill On</h3>
-            <div class="icons">
-                <a href="#" aria-label="HTML"><i class="fab fa-html5"></i></a>
-                <a href="#" aria-label="CSS"><i class="fab fa-css3-alt"></i></a>
-                <a href="#" aria-label="JavaScript"><i class="fab fa-js"></i></a>
-                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        </section>
+
+        <div class="bottom-sections">
+            <div class="social">
+                <h3>Find With Me</h3>
+                <div class="icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="skills">
+                <h3>Best Skill On</h3>
+                <div class="icons">
+                    <a href="#" aria-label="HTML"><i class="fab fa-html5"></i></a>
+                    <a href="#" aria-label="CSS"><i class="fab fa-css3-alt"></i></a>
+                    <a href="#" aria-label="JavaScript"><i class="fab fa-js"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -402,6 +350,13 @@
                     behavior: 'smooth'
                 });
             });
+        });
+
+        // Hamburger Menu Logic
+        const hamburger = document.querySelector('.hamburger-menu');
+        const mobileNav = document.getElementById('mobileNav');
+        hamburger.addEventListener('click', () => {
+            mobileNav.style.display = mobileNav.style.display === 'block' ? 'none' : 'block';
         });
     </script>
 </body>
